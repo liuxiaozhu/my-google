@@ -148,15 +148,17 @@ body {
 
 
 #nav ul li.nav-prev {
-  width: 53px;
+  width: 95px;
+  padding-right: 0em;
 }
 #nav ul li.nav-next {
   width: 71px;
+  padding-left: 0em
 }
 
 #nav ul li.nav-prev .nav-item-img {
   background-position: 0 0;
-  width: 53px;
+  width: 95px;
 }
 
 #nav ul li.nav-next .nav-item-img {
@@ -165,7 +167,7 @@ body {
 }
 
 #nav ul li .nav-item-img {
-  background: url(/img/nav_logo195.png) no-repeat -74px 0;
+  background: url(/img/nav_logo195.png) no-repeat -174px 0;
   width: 20px;
   height: 40px;
 }
