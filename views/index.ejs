@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=8" />
+  
+  <title>Google</title>
+  
+  <link href="/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div id="search">
+    <a href="/"><div id="logo"></div></a>
+    <input type="text" id="s-input" autofocus>
+    <div id="s-btn"><span></span></div>
+  </div>
+  
+
+  <script>
+    var sInput = document.getElementById("s-input");
+    var sBtn = document.getElementById("s-btn");
+    sInput.onkeypress = function(ev) {
+      if (13 == ev.keyCode) {
+        sBtn.click();
+        return false;
+      }
+
+    };
+    sBtn.onclick = function() {
+      window.location.href = '/search?q=' + sInput.value;
+    };
+  </script>
+
+</body>
+</html>
+
+

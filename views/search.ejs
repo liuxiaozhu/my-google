@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=8" />
+  
+  <title>Google</title>
+  
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div id="search">
+    <a href="/"><div id="logo"></div></a>
+    <input type="text" id="s-input" autofocus>
+    <div id="s-btn"><span></span></div>
+  </div>
+
+  
+  <div id="content">
+    <div id="result-info">About <%- searchInformation.formattedTotalResults %> results (<%- searchInformation.formattedSearchTime %> seconds) </div>
+    
+    <%if(items!=null){ %>
+    <% for (var i = 0, results=items, l = results.length; i < l; i++) { %>
+      <div class="content-item">
+        <h3><a href="<%- results[i].link %>" target="_blank"><%- results[i].htmlTitle %></a></h3>
+        <div class="content-item-link"><%- results[i].htmlFormattedUrl %></div>
+        <div class="content-item-desc">
+          <%- results[i].htmlSnippet %>
+        </div>
+      </div>
+    <% } %>
+    <% } %>
+
+    <div id="nav">
+      <ul>
+        <% if (queries.request[0]) { %>
+          <li class="nav-prev">
+            <a href="/search?q=<%- q %>&start=<%- (queries.request[0].startIndex - items.length)>0?(queries.request[0].startIndex - items.length):1 %>">
+              <div class="nav-item-img"></div>
+              <div>上一页</div>
+            </a>
+          </li>
+        <% } %>
+        
+       <% if (queries.nextPage[0]) { %>
+          <li class="nav-next">
+            <a href="/search?q=<%- q %>&start=<%- queries.nextPage[0].startIndex %>">
+              <div class="nav-item-img"></div>
+              <div>下一页</div>
+            </a>
+          </li>
+        <% } %>  
+      </ul>
+    </div>
+  </div>
+  
+
+  <script>
+    var sInput = document.getElementById("s-input");
+    var sBtn = document.getElementById("s-btn");
+    sInput.onkeypress = function(ev) {
+      if (13 == ev.keyCode) {
+        sBtn.click();
+        return false;
+      }
+
+    };
+    sBtn.onclick = function() {
+      window.location.href = '/search?q=' + sInput.value;
+    };
+
+    window.onload = function() {
+      var para = location.search.substr(1);
+      if (para.length > 0) {
+        var arr = para.split(/[&=]/);
+        for (var i = 0; i < arr.length; i += 2) {
+          if ('q' == arr[i]) {
+            sInput.value = decodeURIComponent(arr[i+1]);
+            document.title = sInput.value + ' | Google';
+            break;
+          }
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
+
