@@ -33,7 +33,7 @@
 
     <div id="nav">
       <ul>
-        <% if (queries != null && queries.request != null && queries.request.length > 0 && queries.request[0]) { %>
+        <% if (queries != null && queries.request != null && queries.request.length > 0 && queries.request[0] && typeof items != 'undefined' && items != null) { %>
           <li class="nav-prev">
             <a href="/search?q=<%- q %>&start=<%- (queries.request[0].startIndex - items.length)>0?(queries.request[0].startIndex - items.length):1 %>">
               <div class="nav-item-img"></div>
