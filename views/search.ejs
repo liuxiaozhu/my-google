@@ -19,7 +19,7 @@
   <div id="content">
     <div id="result-info">About <%- searchInformation.formattedTotalResults %> results (<%- searchInformation.formattedSearchTime %> seconds) </div>
     
-    <%if(items!=null){ %>
+    <%if(items!=undefined&&items!=null){ %>
     <% for (var i = 0, results=items, l = results.length; i < l; i++) { %>
       <div class="content-item">
         <h3><a href="<%- results[i].link %>" target="_blank"><%- results[i].htmlTitle %></a></h3>
