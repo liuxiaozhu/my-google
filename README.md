@@ -1,6 +1,6 @@
 # my-google
 Google Mirror by nodejs & express  
-基于Google custom search API实现
+基于 Google custom search API 实现
 #### 创建 Google 服务
 1. 创建 API 秘钥 https://console.developers.google.com/apis
 1. 创建 cse 服务 https://cse.google.com/manage/all
